@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wireframe 1 — Classic &amp; Airy</title>
+<style>
+  @font-face {
+    font-family: 'Merriweather Sans';
+    src: url('../NeurodivergentLeadership/MerriweatherSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: 300 800;
+  }
+  :root {
+    --blue-surf: #3B5B8A;
+    --saltwater: #D0E2F2;
+    --cream: #EEE8DF;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Merriweather Sans', sans-serif;
+    color: var(--blue-surf);
+    background: var(--white);
+  }
+  .variant-tag {
+    position: fixed; top: 0; left: 0; z-index: 99;
+    background: var(--blue-surf); color: var(--white);
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    padding: 4px 12px; border-bottom-right-radius: 8px;
+  }
+  /* placeholder text bars */
+  .bar { background: rgba(59, 91, 138, 0.18); border-radius: 4px; height: 12px; margin: 8px auto; }
+  .bar.w80 { width: 80%; } .bar.w60 { width: 60%; } .bar.w40 { width: 40%; } .bar.w90 { width: 90%; }
+  .bar.left { margin-left: 0; }
+  .img-ph {
+    background: repeating-linear-gradient(45deg, rgba(59,91,138,.08), rgba(59,91,138,.08) 10px, rgba(59,91,138,.14) 10px, rgba(59,91,138,.14) 20px);
+    border: 2px dashed rgba(59,91,138,.35);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(59,91,138,.5); font-size: 13px; letter-spacing: 1px;
+  }
+  .label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: .55; margin-bottom: 12px; }
+
+  /* ============ HEADER ============ */
+  header {
+    background: var(--white);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 48px;
+    border-bottom: 1px solid var(--cream);
+    position: sticky; top: 0; z-index: 50;
+  }
+  header img { height: 56px; }
+  nav { display: flex; gap: 36px; }
+  nav span { font-size: 14px; font-weight: 600; cursor: pointer; padding-bottom: 4px; border-bottom: 2px solid transparent; }
+  nav span:hover { border-bottom-color: var(--blue-surf); }
+  .nav-cta {
+    background: var(--blue-surf); color: var(--white);
+    padding: 10px 22px; border-radius: 6px; font-size: 14px; font-weight: 600;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: var(--saltwater);
+    text-align: center;
+    padding: 110px 24px 120px;
+  }
+  .hero h1 {
+    font-size: 44px; font-weight: 800; line-height: 1.2;
+    max-width: 720px; margin: 0 auto 20px;
+  }
+  .hero .tagline { max-width: 520px; margin: 0 auto 36px; }
+  .btn {
+    display: inline-block; background: var(--blue-surf); color: var(--white);
+    padding: 15px 38px; border-radius: 6px; font-weight: 700; font-size: 15px; cursor: pointer;
+  }
+
+  /* ============ SUBHEADING ============ */
+  .subheading {
+    background: var(--white); text-align: center;
+    padding: 90px 24px;
+  }
+  .subheading h2 { font-size: 30px; font-weight: 700; max-width: 640px; margin: 0 auto 24px; }
+  .subheading .body { max-width: 680px; margin: 0 auto; }
+
+  /* ============ INTRO / ABOUT ============ */
+  .intro {
+    background: var(--cream);
+    padding: 90px 48px;
+  }
+  .intro .inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: center;
+  }
+  .intro .img-ph { width: 100%; aspect-ratio: 1; border-radius: 10px; }
+  .intro h2 { font-size: 28px; font-weight: 700; margin-bottom: 20px; }
+  .btn-outline {
+    display: inline-block; margin-top: 28px;
+    border: 2px solid var(--blue-surf); color: var(--blue-surf);
+    padding: 12px 30px; border-radius: 6px; font-weight: 700; font-size: 14px; cursor: pointer;
+  }
+
+  /* ============ SERVICES ============ */
+  .services { background: var(--white); padding: 90px 48px; text-align: center; }
+  .services h2 { font-size: 28px; font-weight: 700; margin-bottom: 56px; }
+  .services .grid {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px;
+  }
+  .service-card .img-ph { aspect-ratio: 4/3; border-radius: 10px; margin-bottom: 20px; }
+  .service-card h3 { font-size: 17px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+
+  /* ============ TESTIMONIALS ============ */
+  .testimonials { background: var(--saltwater); padding: 90px 48px; text-align: center; }
+  .testimonials h2 { font-size: 28px; font-weight: 700; margin-bottom: 48px; }
+  .t-card {
+    background: var(--white); border-radius: 10px;
+    max-width: 760px; margin: 0 auto; padding: 48px 56px;
+  }
+  .t-card .quote-mark { font-size: 56px; line-height: 1; opacity: .3; font-weight: 800; }
+  .t-nav { margin-top: 28px; display: flex; gap: 10px; justify-content: center; }
+  .t-nav .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(59,91,138,.3); }
+  .t-nav .dot.active { background: var(--blue-surf); }
+
+  /* ============ EXTRAS ============ */
+  .extras { background: var(--white); padding: 90px 24px; text-align: center; }
+  .extras .box {
+    max-width: 640px; margin: 0 auto;
+    background: var(--cream); border-radius: 12px; padding: 56px 48px;
+  }
+  .extras h2 { font-size: 24px; font-weight: 700; margin-bottom: 16px; }
+  .signup { display: flex; gap: 12px; max-width: 440px; margin: 28px auto 0; }
+  .signup .field {
+    flex: 1; background: var(--white); border: 1px solid rgba(59,91,138,.3);
+    border-radius: 6px; height: 48px;
+  }
+  .signup .btn { padding: 0 26px; line-height: 48px; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--blue-surf); color: var(--white);
+    padding: 64px 48px 32px;
+  }
+  footer .inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 48px; align-items: start;
+  }
+  footer .links { display: flex; flex-direction: column; gap: 12px; font-size: 14px; }
+  footer .logo-col { text-align: center; }
+  footer .logo-col .logo-box {
+    width: 120px; height: 120px; margin: 0 auto;
+    background: var(--white); border-radius: 10px; padding: 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  footer .logo-col img { max-width: 100%; max-height: 100%; }
+  footer .right { text-align: right; display: flex; flex-direction: column; gap: 12px; font-size: 14px; }
+  footer .socials { display: flex; gap: 14px; justify-content: flex-end; }
+  footer .socials .s { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,.25); }
+  footer .copyright {
+    text-align: center; margin-top: 48px; padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,.2); font-size: 12px; opacity: .7;
+  }
+
+  @media (max-width: 800px) {
+    header { padding: 14px 20px; } nav { display: none; }
+    .hero h1 { font-size: 32px; }
+    .intro .inner, .services .grid, footer .inner { grid-template-columns: 1fr; }
+    footer .right, footer .socials { text-align: left; justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="variant-tag">Wireframe 1 — Classic &amp; Airy</div>
+
+<!-- HEADER -->
+<header>
+  <img src="../design-system/Main Logo Blue-06-CLEAR.png" alt="Laura Kindron Consulting" />
+  <nav>
+    <span>Nav Item</span>
+    <span>Nav Item</span>
+    <span>Nav Item</span>
+    <span>Nav Item</span>
+  </nav>
+  <div class="nav-cta">CTA Button</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="label">Hero — above the fold</div>
+  <h1>Compelling Headline Goes Here</h1>
+  <div class="tagline">
+    <div class="bar w90"></div>
+    <div class="bar w60"></div>
+  </div>
+  <div class="btn">Primary CTA</div>
+</section>
+
+<!-- SUBHEADING -->
+<section class="subheading">
+  <div class="label">Engaging subheading — visitor's problem</div>
+  <h2>Subheading Addressing Visitor Problems</h2>
+  <div class="body">
+    <div class="bar w90"></div>
+    <div class="bar w80"></div>
+    <div class="bar w60"></div>
+  </div>
+</section>
+
+<!-- INTRO / ABOUT -->
+<section class="intro">
+  <div class="inner">
+    <div class="img-ph">PHOTO OF LAURA</div>
+    <div>
+      <div class="label">Introduce yourself</div>
+      <h2>Intro Heading Here</h2>
+      <div class="bar w90 left"></div>
+      <div class="bar w80 left"></div>
+      <div class="bar w90 left"></div>
+      <div class="bar w40 left"></div>
+      <div class="btn-outline">Link to About</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="label">Offerings directory</div>
+  <h2>Services Heading Here</h2>
+  <div class="grid">
+    <div class="service-card">
+      <div class="img-ph">IMAGE / ICON</div>
+      <h3>Service One</h3>
+      <div class="bar w80"></div>
+      <div class="bar w60"></div>
+    </div>
+    <div class="service-card">
+      <div class="img-ph">IMAGE / ICON</div>
+      <h3>Service Two</h3>
+      <div class="bar w80"></div>
+      <div class="bar w60"></div>
+    </div>
+    <div class="service-card">
+      <div class="img-ph">IMAGE / ICON</div>
+      <h3>Service Three</h3>
+      <div class="bar w80"></div>
+      <div class="bar w60"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="label">Social proof</div>
+  <h2>Testimonials Heading Here</h2>
+  <div class="t-card">
+    <div class="quote-mark">&ldquo;</div>
+    <div class="bar w90"></div>
+    <div class="bar w80"></div>
+    <div class="bar w60"></div>
+    <div class="bar w40" style="margin-top:20px;"></div>
+  </div>
+  <div class="t-nav">
+    <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+</section>
+
+<!-- EXTRAS -->
+<section class="extras">
+  <div class="box">
+    <div class="label">Extras — lead magnet / newsletter</div>
+    <h2>Newsletter / Lead Magnet Heading</h2>
+    <div class="bar w80"></div>
+    <div class="bar w60"></div>
+    <div class="signup">
+      <div class="field"></div>
+      <div class="btn">Sign Up</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="inner">
+    <div class="links">
+      <span>Quick Link</span>
+      <span>Quick Link</span>
+      <span>Quick Link</span>
+      <span>Quick Link</span>
+    </div>
+    <div class="logo-col">
+      <div class="logo-box">
+        <img src="../design-system/Main Logo Blue-06-CLEAR.png" alt="Laura Kindron Consulting" />
+      </div>
+    </div>
+    <div class="right">
+      <div class="socials">
+        <div class="s"></div><div class="s"></div><div class="s"></div>
+      </div>
+      <span>Contact placeholder</span>
+      <span>Location placeholder</span>
+    </div>
+  </div>
+  <div class="copyright">&copy; Copyright line placeholder</div>
+</footer>
+</body>
+</html>

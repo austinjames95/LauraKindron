@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wireframe 3 — Soft &amp; Organic</title>
+<style>
+  @font-face {
+    font-family: 'Merriweather Sans';
+    src: url('../NeurodivergentLeadership/MerriweatherSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: 300 800;
+  }
+  :root {
+    --blue-surf: #3B5B8A;
+    --saltwater: #D0E2F2;
+    --cream: #EEE8DF;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Merriweather Sans', sans-serif;
+    color: var(--blue-surf);
+    background: var(--cream);
+  }
+  .variant-tag {
+    position: fixed; top: 0; left: 0; z-index: 99;
+    background: var(--blue-surf); color: var(--white);
+    font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+    padding: 4px 12px; border-bottom-right-radius: 8px;
+  }
+  .bar { background: rgba(59, 91, 138, 0.18); border-radius: 4px; height: 12px; margin: 8px auto; }
+  .bar.w80 { width: 80%; } .bar.w60 { width: 60%; } .bar.w40 { width: 40%; } .bar.w90 { width: 90%; }
+  .bar.left { margin-left: 0; }
+  .img-ph {
+    background: repeating-linear-gradient(45deg, rgba(59,91,138,.08), rgba(59,91,138,.08) 10px, rgba(59,91,138,.14) 10px, rgba(59,91,138,.14) 20px);
+    border: 2px dashed rgba(59,91,138,.35);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(59,91,138,.5); font-size: 13px; letter-spacing: 1px;
+  }
+  .label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: .55; margin-bottom: 12px; }
+
+  /* decorative dots echoing the logo */
+  .dots { position: absolute; display: flex; gap: 10px; }
+  .dots i { border-radius: 50%; display: block; }
+
+  /* wave divider */
+  .wave { display: block; width: 100%; height: 70px; }
+
+  /* ============ HEADER (floating pill) ============ */
+  .header-wrap { position: sticky; top: 12px; z-index: 50; padding: 0 24px; }
+  header {
+    max-width: 1080px; margin: 0 auto;
+    background: var(--white);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 28px;
+    border-radius: 999px;
+    box-shadow: 0 4px 20px rgba(59,91,138,.12);
+  }
+  header img { height: 50px; }
+  nav { display: flex; gap: 32px; }
+  nav span { font-size: 14px; font-weight: 600; cursor: pointer; }
+  nav span:hover { text-decoration: underline; }
+  .nav-cta {
+    background: var(--blue-surf); color: var(--white);
+    padding: 10px 24px; border-radius: 999px; font-size: 14px; font-weight: 700;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 120px 24px 60px;
+    background: var(--cream);
+    overflow: hidden;
+  }
+  .hero h1 { font-size: 44px; font-weight: 800; line-height: 1.2; max-width: 700px; margin: 0 auto 20px; }
+  .hero .tagline { max-width: 500px; margin: 0 auto 36px; }
+  .btn {
+    display: inline-block; background: var(--blue-surf); color: var(--white);
+    padding: 15px 40px; border-radius: 999px; font-weight: 700; font-size: 15px; cursor: pointer;
+  }
+  .btn-soft {
+    display: inline-block; background: var(--saltwater); color: var(--blue-surf);
+    padding: 15px 40px; border-radius: 999px; font-weight: 700; font-size: 15px; cursor: pointer;
+  }
+  .hero .hero-img {
+    max-width: 860px; margin: 56px auto 0;
+  }
+  .hero .img-ph { width: 100%; aspect-ratio: 21/9; border-radius: 24px; }
+
+  /* ============ SUBHEADING (on saltwater, wave top) ============ */
+  .sub-wrap { background: var(--saltwater); }
+  .subheading { text-align: center; padding: 40px 24px 90px; }
+  .subheading h2 { font-size: 30px; font-weight: 700; max-width: 640px; margin: 0 auto 24px; }
+  .subheading .body { max-width: 680px; margin: 0 auto; }
+
+  /* ============ INTRO (rounded card overlap) ============ */
+  .intro { background: var(--cream); padding: 100px 48px; }
+  .intro .inner {
+    max-width: 1000px; margin: 0 auto;
+    background: var(--white); border-radius: 28px;
+    padding: 64px;
+    display: grid; grid-template-columns: 340px 1fr; gap: 56px; align-items: center;
+    box-shadow: 0 8px 32px rgba(59,91,138,.1);
+  }
+  .intro .img-ph { width: 100%; aspect-ratio: 1; border-radius: 50%; }
+  .intro h2 { font-size: 28px; font-weight: 700; margin-bottom: 20px; }
+
+  /* ============ SERVICES (rounded cards) ============ */
+  .services { background: var(--cream); padding: 20px 48px 100px; text-align: center; }
+  .services h2 { font-size: 28px; font-weight: 700; margin-bottom: 56px; }
+  .services .grid {
+    max-width: 1020px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  }
+  .service-card {
+    background: var(--saltwater); border-radius: 24px; padding: 40px 30px;
+    transition: transform .15s ease;
+  }
+  .service-card:hover { transform: translateY(-4px); }
+  .service-card .icon {
+    width: 72px; height: 72px; border-radius: 50%; background: var(--white);
+    margin: 0 auto 24px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: rgba(59,91,138,.5); letter-spacing: 1px;
+  }
+  .service-card h3 { font-size: 17px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  .service-card .link { display: inline-block; margin-top: 18px; font-size: 13px; font-weight: 700; text-decoration: underline; cursor: pointer; }
+
+  /* ============ TESTIMONIALS (alternating bubbles) ============ */
+  .t-wrap { background: var(--blue-surf); color: var(--white); }
+  .testimonials { padding: 40px 48px 100px; }
+  .testimonials .head { text-align: center; margin-bottom: 56px; }
+  .testimonials h2 { font-size: 28px; font-weight: 700; }
+  .testimonials .label { opacity: .7; }
+  .t-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+  .t-bubble {
+    background: var(--white); color: var(--blue-surf);
+    border-radius: 24px; padding: 36px 44px;
+    max-width: 600px;
+  }
+  .t-bubble.right { align-self: flex-end; background: var(--saltwater); }
+  .t-bubble .who { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+  .t-bubble .avatar { width: 40px; height: 40px; border-radius: 50%; background: rgba(59,91,138,.25); flex-shrink: 0; }
+  .t-bubble .bar { margin-left: 0; }
+
+  /* ============ EXTRAS ============ */
+  .extras { background: var(--cream); text-align: center; padding: 40px 24px 100px; position: relative; overflow: hidden; }
+  .extras h2 { font-size: 26px; font-weight: 700; margin: 0 auto 16px; max-width: 520px; }
+  .extras .body { max-width: 480px; margin: 0 auto; }
+  .signup {
+    display: flex; gap: 12px; max-width: 460px; margin: 32px auto 0;
+    background: var(--white); border-radius: 999px; padding: 8px;
+    box-shadow: 0 4px 20px rgba(59,91,138,.12);
+  }
+  .signup .field { flex: 1; height: 48px; border-radius: 999px; }
+  .signup .btn { padding: 0 30px; line-height: 48px; }
+
+  /* ============ FOOTER (wave top) ============ */
+  .footer-wrap { background: var(--blue-surf); }
+  footer { color: var(--white); padding: 20px 48px 32px; }
+  footer .inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 48px; align-items: center;
+  }
+  footer .links { display: flex; flex-direction: column; gap: 12px; font-size: 14px; }
+  footer .logo-col { text-align: center; }
+  footer .logo-box {
+    width: 130px; height: 130px; margin: 0 auto;
+    background: var(--white); border-radius: 50%; padding: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  footer .logo-box img { max-width: 100%; max-height: 100%; }
+  footer .right { text-align: right; display: flex; flex-direction: column; gap: 12px; font-size: 14px; align-items: flex-end; }
+  footer .socials { display: flex; gap: 14px; }
+  footer .socials .s { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,.25); }
+  footer .copyright {
+    text-align: center; margin-top: 44px; padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,.2); font-size: 12px; opacity: .7;
+  }
+
+  @media (max-width: 900px) {
+    nav { display: none; }
+    .hero h1 { font-size: 32px; }
+    .intro .inner { grid-template-columns: 1fr; padding: 40px 28px; }
+    .services .grid, footer .inner { grid-template-columns: 1fr; }
+    .t-bubble.right { align-self: stretch; }
+    footer .right { align-items: flex-start; text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="variant-tag">Wireframe 3 — Soft &amp; Organic</div>
+
+<!-- HEADER -->
+<div class="header-wrap">
+  <header>
+    <img src="../design-system/Main Logo Blue-06-CLEAR.png" alt="Laura Kindron Consulting" />
+    <nav>
+      <span>Nav Item</span>
+      <span>Nav Item</span>
+      <span>Nav Item</span>
+      <span>Nav Item</span>
+    </nav>
+    <div class="nav-cta">CTA Button</div>
+  </header>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="dots" style="top:90px; left:8%;">
+    <i style="width:16px;height:16px;background:var(--saltwater);"></i>
+    <i style="width:10px;height:10px;background:var(--blue-surf);opacity:.4;margin-top:18px;"></i>
+  </div>
+  <div class="dots" style="top:150px; right:10%;">
+    <i style="width:12px;height:12px;background:var(--blue-surf);opacity:.35;"></i>
+    <i style="width:20px;height:20px;background:var(--saltwater);margin-top:-14px;"></i>
+  </div>
+  <div class="label">Hero — above the fold</div>
+  <h1>Compelling Headline Goes Here</h1>
+  <div class="tagline">
+    <div class="bar w90"></div>
+    <div class="bar w60"></div>
+  </div>
+  <div class="btn">Primary CTA</div>
+  <div class="hero-img">
+    <div class="img-ph">HERO IMAGE</div>
+  </div>
+</section>
+
+<!-- WAVE into saltwater -->
+<div class="sub-wrap">
+  <svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="background:var(--cream);">
+    <path d="M0,40 C360,90 1080,-10 1440,40 L1440,70 L0,70 Z" fill="#D0E2F2"></path>
+  </svg>
+  <section class="subheading">
+    <div class="label">Engaging subheading — visitor's problem</div>
+    <h2>Subheading Addressing Visitor Problems</h2>
+    <div class="body">
+      <div class="bar w90"></div>
+      <div class="bar w80"></div>
+      <div class="bar w60"></div>
+    </div>
+  </section>
+  <svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="background:var(--saltwater);">
+    <path d="M0,30 C400,80 1040,-20 1440,30 L1440,70 L0,70 Z" fill="#EEE8DF"></path>
+  </svg>
+</div>
+
+<!-- INTRO / ABOUT -->
+<section class="intro">
+  <div class="inner">
+    <div class="img-ph">PHOTO OF LAURA</div>
+    <div>
+      <div class="label">Introduce yourself</div>
+      <h2>Intro Heading Here</h2>
+      <div class="bar w90 left"></div>
+      <div class="bar w80 left"></div>
+      <div class="bar w90 left"></div>
+      <div class="bar w40 left"></div>
+      <div class="btn-soft" style="margin-top:24px;">Link to About</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="label">Offerings directory</div>
+  <h2>Services Heading Here</h2>
+  <div class="grid">
+    <div class="service-card">
+      <div class="icon">ICON</div>
+      <h3>Service One</h3>
+      <div class="bar w80"></div>
+      <div class="bar w60"></div>
+      <div class="link">Learn more</div>
+    </div>
+    <div class="service-card">
+      <div class="icon">ICON</div>
+      <h3>Service Two</h3>
+      <div class="bar w80"></div>
+      <div class="bar w60"></div>
+      <div class="link">Learn more</div>
+    </div>
+    <div class="service-card">
+      <div class="icon">ICON</div>
+      <h3>Service Three</h3>
+      <div class="bar w80"></div>
+      <div class="bar w60"></div>
+      <div class="link">Learn more</div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE into testimonials -->
+<div class="t-wrap">
+  <svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="background:var(--cream);">
+    <path d="M0,40 C360,90 1080,-10 1440,40 L1440,70 L0,70 Z" fill="#3B5B8A"></path>
+  </svg>
+  <section class="testimonials">
+    <div class="head">
+      <div class="label">Social proof</div>
+      <h2>Testimonials Heading Here</h2>
+    </div>
+    <div class="t-list">
+      <div class="t-bubble">
+        <div class="bar w90"></div>
+        <div class="bar w80"></div>
+        <div class="bar w60"></div>
+        <div class="who"><div class="avatar"></div><div class="bar w60" style="margin:0;"></div></div>
+      </div>
+      <div class="t-bubble right">
+        <div class="bar w90"></div>
+        <div class="bar w80"></div>
+        <div class="bar w60"></div>
+        <div class="who"><div class="avatar"></div><div class="bar w60" style="margin:0;"></div></div>
+      </div>
+    </div>
+  </section>
+  <svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="background:#3B5B8A;">
+    <path d="M0,30 C400,80 1040,-20 1440,30 L1440,70 L0,70 Z" fill="#EEE8DF"></path>
+  </svg>
+</div>
+
+<!-- EXTRAS -->
+<section class="extras">
+  <div class="dots" style="bottom:60px; left:12%;">
+    <i style="width:14px;height:14px;background:var(--saltwater);"></i>
+    <i style="width:9px;height:9px;background:var(--blue-surf);opacity:.4;margin-top:16px;"></i>
+  </div>
+  <div class="label">Extras — lead magnet / newsletter</div>
+  <h2>Newsletter / Lead Magnet Heading</h2>
+  <div class="body">
+    <div class="bar w80"></div>
+    <div class="bar w60"></div>
+  </div>
+  <div class="signup">
+    <div class="field"></div>
+    <div class="btn">Sign Up</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer-wrap">
+  <svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="background:var(--cream);">
+    <path d="M0,40 C360,90 1080,-10 1440,40 L1440,70 L0,70 Z" fill="#3B5B8A"></path>
+  </svg>
+  <footer>
+    <div class="inner">
+      <div class="links">
+        <span>Quick Link</span>
+        <span>Quick Link</span>
+        <span>Quick Link</span>
+        <span>Quick Link</span>
+      </div>
+      <div class="logo-col">
+        <div class="logo-box">
+          <img src="../design-system/Main Logo Blue-06-CLEAR.png" alt="Laura Kindron Consulting" />
+        </div>
+      </div>
+      <div class="right">
+        <div class="socials">
+          <div class="s"></div><div class="s"></div><div class="s"></div>
+        </div>
+        <span>Contact placeholder</span>
+        <span>Location placeholder</span>
+      </div>
+    </div>
+    <div class="copyright">&copy; Copyright line placeholder</div>
+  </footer>
+</div>
+</body>
+</html>
