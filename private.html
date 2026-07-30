@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Dashboard — Laura Kindron Consulting</title>
+<link rel="stylesheet" href="/src/style/index.css">
+<link rel="stylesheet" href="/src/dashboard/dashboard.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-wrap"><img src="/images/LOGO.png" alt="Laura Kindron Consulting" /></div>
+  <nav>
+    <span onclick="location.href='/index.html'">Home</span>
+    <span onclick="location.href='/research.html'">Research</span>
+    <span onclick="location.href='/services.html'">Services</span>
+  </nav>
+  <div class="nav-cta" onclick="location.href='/contact.html'">Contact Us</div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero on-dark">
+  <div class="inner">
+    <div class="label on-dark">Private</div>
+    <h1>Dashboard</h1>
+    <p class="hero-sub">Share a research article and your thoughts on it. Anything you publish here appears on the Research page.</p>
+  </div>
+</section>
+
+<section class="section bg-ivory">
+  <div class="inner dash-grid">
+
+    <!-- ============ THE FORM ============ -->
+    <div class="form-card">
+      <h2 class="card-title" id="form-title">New article</h2>
+
+      <!-- novalidate: we let our own JS handle validation so the messages
+           look like the rest of the site instead of the browser's bubbles. -->
+      <form id="article-form" novalidate>
+        <!-- Empty when creating, holds an id when editing. This one hidden
+             field is what decides POST vs PUT. -->
+        <input type="hidden" id="article-id" value="">
+
+        <div class="field full">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" placeholder="What are you calling this post?" />
+        </div>
+
+        <div class="field full">
+          <label for="link">Article shared</label>
+          <input type="url" id="link" name="link" placeholder="https://…" />
+          <span class="hint">Paste the full link to the research article.</span>
+        </div>
+
+        <div class="field full">
+          <label for="text">Your write-up</label>
+          <textarea id="text" name="text" rows="8" placeholder="Why does this matter? What stood out?"></textarea>
+        </div>
+
+        <!-- Filled in by JS when the server rejects something. -->
+        <div id="form-errors" class="form-errors" hidden></div>
+
+        <div class="submit-row">
+          <button type="submit" class="btn dark" id="submit-btn">Publish</button>
+          <button type="button" class="btn ghost" id="cancel-btn" hidden>Cancel edit</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ============ REQUEST LOG ============
+         Not something you'd ship — it's here so you can literally watch the
+         frontend talk to the backend. Every fetch() shows up as a line. -->
+    <aside>
+      <div class="side-box log-box">
+        <h4>Network activity</h4>
+        <p class="log-intro">Each line is one real HTTP request from this page to <code>server.js</code>.</p>
+        <ul id="request-log" class="request-log">
+          <li class="log-empty">Nothing yet.</li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- ============ WHAT'S ALREADY PUBLISHED ============ -->
+<section class="section bg-white">
+  <div class="inner">
+    <div class="list-head">
+      <h2>Published <span id="count" class="count"></span></h2>
+    </div>
+
+    <!-- JS fills this in from the server. It starts empty on purpose:
+         the page never hardcodes data it doesn't own. -->
+    <div id="article-list" class="dash-list">
+      <p class="state-msg">Loading…</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="footer"></div>
+<script src="/src/footer/footer.js"></script>
+<script src="/src/dashboard/dashboard.js"></script>
+</body>
+</html>

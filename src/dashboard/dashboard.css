@@ -1,0 +1,100 @@
+/* Dashboard-only styles. Uses the tokens from index.css — no new colors.
+   index.css styles `.input` as a wireframe placeholder div, so real form
+   controls need their own rules here. */
+
+.hero-sub { max-width: 560px; font-size: 15px; line-height: 1.7; opacity: .8; }
+
+.dash-grid { display: grid; grid-template-columns: 1fr 340px; gap: 40px; align-items: start; }
+
+/* ---- form ---- */
+.form-card .card-title { font-size: 22px; font-weight: 700; color: var(--midnight-blue); margin-bottom: 28px; }
+.form-card .field { margin-bottom: 22px; }
+
+.form-card input[type="text"],
+.form-card input[type="url"],
+.form-card textarea {
+  font-family: inherit; font-size: 14px; color: var(--midnight-blue);
+  background: rgba(82,103,125,.10);
+  border: 1px solid transparent; border-radius: 8px;
+  padding: 13px 14px; width: 100%;
+  transition: border-color .15s ease, background .15s ease;
+}
+.form-card textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+.form-card input::placeholder,
+.form-card textarea::placeholder { color: var(--dusty-blue); opacity: .6; }
+.form-card input:focus,
+.form-card textarea:focus {
+  outline: none; background: var(--white); border-color: var(--midnight-blue);
+}
+
+.hint { font-size: 12px; opacity: .65; }
+
+.form-errors {
+  background: rgba(180, 60, 60, .08); border: 1px solid rgba(180, 60, 60, .35);
+  border-radius: 8px; padding: 12px 14px; font-size: 13px; color: #8d2f2f;
+}
+
+.form-card .btn { padding: 13px 32px; font-size: 14px; }
+.form-card .btn:disabled { opacity: .55; cursor: default; }
+button.btn { border: 0; font-family: inherit; }
+button.btn.ghost { background: none; border: 1px solid rgba(82,103,125,.45); }
+
+/* ---- request log ---- */
+.log-box { position: sticky; top: calc(var(--header-h) + 24px); }
+.log-intro { font-size: 12px; line-height: 1.6; opacity: .7; margin-bottom: 16px; }
+.log-intro code { font-size: 11px; background: rgba(82,103,125,.14); padding: 1px 5px; border-radius: 4px; }
+
+.request-log { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.request-log li {
+  display: grid; grid-template-columns: 52px 1fr auto; gap: 8px; align-items: center;
+  font-size: 11px; font-family: ui-monospace, Menlo, Consolas, monospace;
+  padding: 8px 10px; border-radius: 6px; background: rgba(82,103,125,.08);
+}
+.log-method { font-weight: 700; color: var(--midnight-blue); }
+.log-path { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; opacity: .75; }
+.log-status { font-weight: 700; }
+.log-ok .log-status { color: #2f6b45; }
+.log-bad { background: rgba(180,60,60,.10); }
+.log-bad .log-status { color: #8d2f2f; }
+.log-empty { display: block !important; opacity: .5; font-style: italic; }
+
+/* ---- published list ---- */
+.list-head { margin-bottom: 8px; }
+.count { font-weight: 400; opacity: .45; }
+
+.dash-item {
+  display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: start;
+  padding: 30px 0; border-bottom: 1px solid rgba(82,103,125,.22);
+}
+.dash-item h3 { font-size: 20px; font-weight: 700; color: var(--midnight-blue); margin: 10px 0 12px; }
+.dash-text {
+  font-size: 14px; line-height: 1.75; max-width: 68ch;
+  white-space: pre-wrap; /* keeps the paragraph breaks she typed */
+}
+.dash-link {
+  display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600;
+  color: var(--midnight-blue); text-decoration: none; border-bottom: 1px solid rgba(35,55,87,.4);
+  padding-bottom: 2px;
+}
+.dash-link:hover { border-bottom-color: var(--midnight-blue); }
+
+.dash-item-actions { display: flex; flex-direction: column; gap: 10px; }
+.link-btn {
+  background: none; border: 1px solid rgba(82,103,125,.35); border-radius: 999px;
+  font-family: inherit; font-size: 12px; font-weight: 600; color: var(--midnight-blue);
+  padding: 8px 20px; cursor: pointer;
+}
+.link-btn:hover { border-color: var(--midnight-blue); }
+.link-btn.danger { color: #8d2f2f; border-color: rgba(141,47,47,.3); }
+.link-btn.danger:hover { border-color: #8d2f2f; }
+
+.state-msg { font-size: 14px; opacity: .7; padding: 28px 0; }
+.state-msg.error { color: #8d2f2f; opacity: 1; }
+.state-msg code { font-size: 13px; background: rgba(82,103,125,.14); padding: 2px 6px; border-radius: 4px; }
+
+@media (max-width: 900px) {
+  .dash-grid { grid-template-columns: 1fr; gap: 28px; }
+  .log-box { position: static; }
+  .dash-item { grid-template-columns: 1fr; gap: 18px; }
+  .dash-item-actions { flex-direction: row; }
+}
