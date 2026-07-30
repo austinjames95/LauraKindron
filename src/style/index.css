@@ -113,6 +113,7 @@
     padding: 15px 38px; border-radius: 999px; font-weight: 700; font-size: 15px; cursor: pointer; margin-top: 28px;
   }
   .btn.dark { background: var(--midnight-blue); color: var(--white); }
+  .hero-text { font-family: 'Lexend'; color: #D1CFC9; font-size: 20px; margin-bottom:1rem}
 
   /* ============ SUBHEADING (band) ============ */
   .subheading {
