@@ -13,6 +13,11 @@ dist-ssr
 *.local
 NeurodivergentLeadership
 
+# Plaintext source for the StatiCrypt-protected page.
+# Only the encrypted build (./private.html) belongs in the repo.
+private-src/
+encrypted/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
